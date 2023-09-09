@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Age-calculator</title>
+  <link rel="stylesheet" href="AgeCal.css">
+</head>
+<body>
+  <div class="container">
+    <div class="calculator">
+      <h1>Calculate your age<br/>with <span>Age calculator...</span></h1>
+      <div class="input-box">
+        <input type="date" id="date">
+        <button onclick="calculateAge()">Calculate-Age</button>
+      </div>
+      <p id="result"></p>
+    </div>
+  </div>
+  
+
+  <script>
+    let userInput = document.getElementById("date");
+    userInput.max = new Date().toISOString().split(" ")[0];
+    let result = document.getElementById("result")
+
+    function calculateAge(){
+        let birthDate = new Date(userInput.value);
+
+        let d1 = birthDate.getDate();
+        let m1 = birthDate.getMonth() + 1;
+        let y1 = birthDate.getFullYear();
+
+        let today = new Date();
+
+        let d2 = today.getDate();
+        let m2 = today.getMonth();
+        let y2 = today.getFullYear();
+
+        let d3, m3, y3;
+
+        y3 = y2 - y1;
+
+        if(m2 >= m1){
+          m3 = m2 - m1;
+        }else{
+          y3--;
+          m3 = 12 + m2 - m1;
+        }
+        if(d2 >= d1){
+          d3 = d2 - d1;
+        }else{
+          m3--;
+          d3 = getDaysInMonth(y1, m1) + d2 - d1;
+
+        }
+        if(m3 < 0){
+          m3 = 11;
+          y3--;
+        }
+         result.innerHTML = `you are <span>${y3}</span> years, <span>${m3}</span/> months and <span>${d3}</span> days old`
+
+    }
+    function getDaysInMonth(year, month){
+      return new Date(year, month, 0).getDate();
+    }
+  </script>
+
+</body>
+</html> 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+        //    let num=[1,2,3,4]
+        // let gum=num[0]
+        // for(let index=0; index<num.length; index++){
+        //     if(num[index]>gum){
+        //         gum=num[index]
+        //     }
+        // }console.log(gum)
+
+
+  {
+    const num = 90;
+  }
+  document.write(num)
+     
+        // let number = [12,34,3,99]
+        // let number2 =number[0]
+
+        // for(i=0; i<number.length; i++){
+        //   if(number[i]>number2){
+        //     number2=number[i]
+        //   }
+        // }
+        // console.log(number2)
+
+
+        // let array =[10,20,30,40];
+        // let array2= array[0]
+
+        // for(let index=0; index<array.length; index++){
+        //   if(array[index]>array2){
+        //     array2=array[index]
+        //   }
+        // }
+        // console.log(array2)
+
+        // let arr=[10,5,2,1];
+        // let arr2=arr[10];
+
+        // for(let index=10; index>arr.length; index++){
+        //   if(arr[index]<arr2){
+        //     arr2=arr[index]
+        //   }
+
+        // }
+        // console.log(arr)
+
+
+//         var a = [2,3,4]
+//  a.forEach(function(value){
+//     console.log(value+2)
+//  })
+
+//  const arr = [1,2,3,4];
+//  arr.forEach(function(value){
+//   console.log(value+10)
+//  })
+
+ 
+ 
+//  var num2 = [10,200,300,400,]
+//  num2.forEach(function(result){
+//     console.log(result+200)
+//  })
+  </script>
+</body>
+</html>  -->
